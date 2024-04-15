@@ -1,0 +1,3 @@
+[build]
+    functions = "netlify_functions"
+    command = "npm run prod"

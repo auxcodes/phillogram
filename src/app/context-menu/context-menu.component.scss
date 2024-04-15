@@ -1,0 +1,27 @@
+
+
+.cm-background {
+  height: 100%;
+  width: 100%;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  overflow-x: hidden; /* Disable horizontal scroll */
+  //background-color: #ffffff
+}
+
+.cm-options {
+  position: absolute;
+  left: 500px;
+  top: 500px;
+  margin: 6px;
+  border: 2px solid #808080;
+  border-radius: 5px;
+  box-shadow: #555 1px 1px 8px 1px;
+  cursor: pointer;
+  min-width: 200px;
+  min-height: 200px;
+  background-color: #eee;
+  z-index: 3;
+}

@@ -1,0 +1,241 @@
+@import '../../sass/__variables';
+
+.nav-bar {
+  top: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.title-bar {
+  display: flex;
+  flex-wrap: nowrap;
+  list-style-type: none;
+  margin: 5px 0 5px 0;
+  padding: 0;
+  overflow: hidden;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+
+  .right-menu {
+    flex-basis: 10%;
+
+    ul {
+      display: flex;
+      justify-content: flex-end;
+      align-items: stretch;
+      margin: 0;
+      padding: 0;
+    }
+
+    .site-link {
+
+      .text-btn {
+        padding: 5px 8px 0px 8px;
+        margin-top: 8px;
+      }
+
+      .icon-btn {
+        position: relative;
+        padding: 5px 8px 0px 8px;
+
+        .unread {
+          position: absolute;
+          top: 15%;
+          right: 5%;
+          width: 0.75rem;
+          height: 0.75rem;
+          background-color: #ff0000;
+          border-radius: 0.5rem;
+          border: 2px solid #000;
+        }
+
+        .alert {
+          width: 2rem;
+          height: 2.5rem;
+        }
+
+        .account {
+          width: 2.5rem;
+          height: 2.5rem;
+        }
+
+        .account-ct {
+          border-radius: 50%;
+          border: 1px solid $border-color;
+        }
+
+        .upload {
+          width: 2rem;
+          height: 2.5rem;
+        }
+      }
+    }
+  }
+
+  .title {
+    flex-basis: 90%;
+    display: flex;
+
+    h1 {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      align-items: stretch;
+      margin: 5px 10px;
+      padding: 0;
+      font-family: 'Mali', cursive, Helvetica, Arial, sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: left;
+      color: $nav-text;
+    }
+
+    span {
+      font-family: Courier New, Courier, monospace;
+      color: green;
+      font-weight: bold;
+      margin: auto;
+    }
+
+    .icon-btn {
+      padding: 5px 8px 0px 8px;
+
+      .logo {
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+    }
+  }
+
+  .site-link {
+    display: flex;
+    padding: 0;
+    transition: all .3s;
+    margin: 0 1px;
+
+    &:hover {
+      border-bottom-color: transparent;
+    }
+
+    &:active {
+      border-bottom-color: black;
+    }
+
+    button {
+      display: flex;
+      flex-direction: row;
+      background: none;
+      border: 0;
+      border-bottom: 1px solid transparent;
+      color: $link-text-color;
+      cursor: pointer;
+      padding: 15px 16px 13px 16px;
+
+      .icon {
+        margin: auto 0;
+      }
+
+      .text {
+        font-family: 'Mali', cursive, Helvetica, Arial, sans-serif;
+        font-size: 1.25rem;
+        font-weight: 700;
+        text-align: left;
+        color: $nav-text;
+        white-space: nowrap;
+      }
+    }
+  }
+}
+
+.nav-bar-content {
+  display: flex;
+  flex-wrap: nowrap;
+  list-style-type: none;
+  margin: 0 0 10px 0;
+  padding: 0;
+  overflow: hidden;
+  border-top: 2px solid $border-color;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+
+  .right-menu {
+    ul {
+      display: flex;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      align-items: stretch;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .site-nav {
+    margin: 0 auto;
+
+    ul {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      align-items: stretch;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .current-selection {
+    border-right: 2px solid $border-color;
+    border-left: 2px solid $border-color;
+  }
+
+  .site-link {
+    display: flex;
+    padding: 0;
+    //background-color: $border-color;
+    border-bottom: 2px solid $border-color;
+    border-top: 2px solid transparent;
+    transition: all .3s;
+    border-radius: 0 0 30px 30px;
+    margin: 0 1px;
+
+    &:hover {
+      border-top-color: transparent;
+    }
+
+    &:active {
+      border-top-color: $highlight-btn-color;
+    }
+
+
+    button {
+      background: none;
+      border: 0;
+      border-bottom: 1px solid transparent;
+      color: $link-text-color;
+      cursor: pointer;
+      padding: 10px 16px;
+
+      .icon {
+        height: 26px;
+        vertical-align: middle;
+        margin-right: 2px;
+      }
+
+      .text {
+        //font-family: "Lato", Helvetica, Arial, sans-serif;
+        //font-family: 'Comfortaa', cursive;
+        //xfont-family: 'Grand Hotel', cursive;
+        font-family: 'Mali', cursive, Helvetica, Arial, sans-serif;
+        //font-family: 'Short Stack', cursive;
+        //xfont-family: 'Delius Swash Caps', cursive;
+        font-size: 1.125rem;
+        font-weight: 700;
+        text-align: left;
+        color: $nav-text;
+        white-space: nowrap;
+        vertical-align: middle;
+      }
+    }
+  }
+}

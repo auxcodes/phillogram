@@ -1,0 +1,67 @@
+@import './__variables';
+
+select {
+  width: 100%;
+  max-width: 500px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid $border-color;
+  border-radius: 50px;
+  box-sizing: border-box;
+  transition: box-shadow .15s;
+  font-size: 1.25rem;
+
+  &:focus {
+    box-shadow: 0 4px 8px $btn-box-shadow-high;
+  }
+  // remove old arrow
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+select.minimal {
+  //arrow
+  background-image:
+    linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, gray 50%, transparent 50%),
+    linear-gradient(to right, #ccc, #ccc);
+  background-position:
+    calc(100% - 25px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px),
+    calc(100% - 2.5em) 0.5em;
+  background-size: 10px 10px, 10px 10px, 1px 1.5em;
+  background-repeat: no-repeat;
+
+  &:focus {
+    //arrow 
+    background-image:
+      linear-gradient(45deg, green 50%, transparent 50%),
+      linear-gradient(135deg, transparent 50%, green 50%),
+      linear-gradient(to right, #ccc, #ccc);
+    background-position: calc(100% - 15px) 1em, calc(100% - 25px) 1em, calc(100% - 2.5em) 0.5em;
+    background-size: 10px 10px, 10px 10px, 1px 1.5em;
+    background-repeat: no-repeat;
+    outline: 0;
+  }
+}
+
+select.classic {
+  background-image: linear-gradient(45deg, transparent 50%, white 50%), linear-gradient(135deg, white 50%, transparent 50%), linear-gradient(to right, $highlight-btn-color, $highlight-btn-color);
+  background-position: calc(100% - 25px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), 100% 0;
+  background-size: 10px 10px, 10px 10px, 2.5em 2.5em;
+  background-repeat: no-repeat;
+
+  &:focus {
+    background-image: linear-gradient(45deg, white 50%, transparent 50%), linear-gradient(135deg, transparent 50%, white 50%), linear-gradient(to right, $highlight-btn-color, $highlight-btn-color);
+    background-position: calc(100% - 15px) 1em, calc(100% - 25px) 1em, 100% 0;
+    background-size: 10px 10px, 10px 10px, 2.5em 2.5em;
+    background-repeat: no-repeat;
+    border-color: $border-color;
+    outline: 0;
+  }
+}

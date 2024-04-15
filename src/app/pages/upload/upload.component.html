@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="form-content" >
+    <h1 class="title">Upload New Photos</h1>
+    <div class="form-section">
+      <div class="form-group">
+        <label for="albums"> Album: </label>
+        <select class="classic" id="albums" #albumSelect required [(ngModel)]="selectedAlbum" (change)="selectChangeHandler($event)">
+          <option class="highlight" value="undefined" [selected]="selected == false">Select Album</option>
+          <option [ngValue]="album" *ngFor="let album of albums | async">{{album.name}}</option>
+          <option class="highlight" value="addAlbum">Add Album</option>
+        </select>
+      </div>
+      <div class="form-group" *ngIf="albumId == 'addAlbum'">
+        <input class="" #albumName id="albumNames" value="" placeholder="New Photo Album Name" required />
+        <select class="classic" id="privacy" #privacySelect required>
+          <option value="undefined" [selected]="selectedPrivacy == undefined">Select Privacy</option>
+          <option value="0">Public</option>
+          <option value="1">Viewer</option>
+          <option value="2">Subscriber</option>
+          <option value="3">Admin</option>
+        </select>
+        <button class="" (click)="addAlbum(albumName.value, privacySelect.value)" [disabled]="albumId == undefined">Add Album</button>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="form-content" [(ngModel)]="selected" *ngIf="selected">
+        <div class="form-group">
+          <label class="" for="browse"> Select Photos: </label>
+          <div class="file-browse">
+            <button (click)="fileInput.click()" class="browse-btn">Browse</button>
+            <input class="files-text" type="text" [value]="fileNames" disabled />
+            <input #fileInput class="hidden-input" id="browse" type="file" (change)="handleFiles($event)" multiple />
+          </div>
+          <div *ngIf="imagePreviewSrc">
+            <img *ngFor="let image of imagePreviewSrc" class="img-preview" [src]="image" />
+          </div>
+        </div>
+        <div class="btn-right">
+          <button class="" (click)="onUpload()" [disabled]="upload || !files">Upload <span *ngIf="upload">{{upload.progress}}</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

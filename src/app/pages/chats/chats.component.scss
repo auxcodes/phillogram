@@ -1,0 +1,83 @@
+@import '../../../sass/__variables';
+
+.create-btn {
+  display: inline-flex;
+  padding: 0 16px 0 16px;
+  margin: 10px 0;
+  min-height: 36px;
+  text-decoration: none;
+  font-size: 1.05em;
+  cursor: pointer;
+  align-items: center;
+  color: #fff;
+  background-color: #6b6cf6;
+  border-radius: 36px;
+  border: none;
+  transition: box-shadow .15s;
+
+  &:hover {
+    box-shadow: 0 7px 15px $btn-box-shadow-high;
+  }
+
+  &:active {
+    box-shadow: 0 1px 3px $btn-box-shadow-low;
+  }
+}
+
+.chats {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  margin: auto;
+  max-width: 720px;
+}
+
+.chat-list{
+  display: flex;
+  flex-direction: column;
+}
+
+.chat {
+  display: inline-flex;
+  min-height: 35px;
+  position: relative;
+  list-style-type: none;
+  margin: 5px auto 5px 0;
+  padding: 5px 40px 5px 20px;
+  border-radius: 25px 25px;
+  border: 1px solid $border-color;
+
+  .link {
+    display: inline-flex;
+    padding: 0 0 0 30px;
+    text-decoration: none;
+    align-items: center;
+    color: #000;
+  }
+
+  img {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 35px;
+    height: 35px;
+    border-radius: 35px;
+  }
+
+  .delete-button {
+    position: absolute;
+    cursor: pointer;
+    top: 16%;
+    right: 2%;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background-color: #000;
+    mask-image: url('/assets/icons/delete_forever-24px.svg');
+    mask-repeat: no-repeat;
+    mask-position: 50%;
+    mask-size: 24px;
+    border-radius: 38px;
+    margin: 0;
+  }
+}

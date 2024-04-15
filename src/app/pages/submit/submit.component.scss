@@ -1,0 +1,41 @@
+@import '../../../sass/forms';
+@import '../../../sass/__variables';
+
+
+.files {
+  display: flex;
+  flex-direction: row;
+
+  .img-preview {
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    border-radius: 50px;
+    border: 1px solid $border-color;
+    width: 80px;
+    height: 80px;
+
+    img {
+      max-height: 76px;
+      max-width: 76px;
+      border-radius: 76px;
+      min-width: 76px;
+      min-height: 76px;
+      margin: 2px;
+      transition: opacity 0.2s ease-in-out;
+    }
+
+    &:hover {
+      background-image: url('/assets/icons/delete_forever-24px.svg');
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      background-size: 75%;
+
+      img {
+        opacity: 0.25;
+        cursor: pointer;
+        border-radius: 76px;
+      }
+    }
+  }
+}

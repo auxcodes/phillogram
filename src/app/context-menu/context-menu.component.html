@@ -1,0 +1,4 @@
+<div *ngIf="hasAccess()" class="cm-options" [ngStyle]="{'left': menuPos.x + 'px', 'top': menuPos.y + 'px'}">
+  <app-image-menu *ngIf="isImageMenu()" oncontextmenu="return false"></app-image-menu>
+  <app-album-menu *ngIf="isAlbumMenu()" oncontextmenu="return false"></app-album-menu>
+</div>  

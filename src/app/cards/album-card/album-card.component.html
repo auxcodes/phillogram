@@ -1,0 +1,23 @@
+<div class="card" >
+  <div class="card-image" >
+    <a class="img-link" [id]="album.$key" *ngIf="album.images && album.images.length >= 1" 
+       [routerLink]="['/image', album.images[selectedImage].collection , album.images[selectedImage].$key]" >
+      <img src="{{imageUrl(selectedImage)}}" class="tn"/>
+      </a>
+    <div class="card-arrows" *ngIf="album.images && album.images.length > 1">
+      <button class="arrow prev" (click)="onPrevious($event)"></button>
+      <button class="arrow next" (click)="onNext($event)"></button>
+    </div>
+    <img *ngIf="!album?.images || albumImagesCount() < 1" src="{{spinner}}" class="tn" [id]="album.$key"/>
+  </div>
+  <div class="carousel" >
+    <span class="" [id]="image.$key"
+          *ngFor="let image of album.images, let isFirst = first" [class.active-dot]="isFirst" (click)="onClick($event)"
+          [ngClass]="{'dot': album.images && album.images.length > 1}"></span>
+  </div>
+  <div class="card-caption">
+    <div class="card-description">
+      {{album.name}}
+    </div>
+  </div>
+</div>

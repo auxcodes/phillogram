@@ -1,0 +1,41 @@
+<ng-container class="container" *ngIf="chat$ | async as chat">
+  <div class="chat-form form-content" *ngIf=" auth.authUser() | async as user">
+    <div class="top">
+      <a class="back-btn" routerLink="/chats">❮ Back</a>
+    </div>
+    <div #chatBox id="chatBox" class="chat" [scrollTop]="chatBox.scrollHeight">
+      <div class="msg" *ngFor="let msg of chat.messages; trackBy: trackByCreated">
+        <div class="user">
+          <div *ngIf="msg.uid !== user.uid">
+            <img [src]="msg.user?.photoURL || 'assets/icons/account_circle-24px.svg'">
+            <span class="name">{{ msg.user?.displayName || msg.user?.uid }} {{msg.createdAt | date: 'HH:mm LLL dd'}}</span>
+          </div>
+        </div>
+        <div class="msg-content" [ngClass]="{'their-msg': msg.uid !== user.uid}">
+          <span class="text">{{ msg.content }}</span>
+          <a [routerLink]="['/image', cs.cuid , msg?.imageRef]" class="msg-img" *ngIf="msg?.imageUrl">
+            <span class="view-icon"></span>
+            <span class="view-text">View Image</span>
+          </a>
+          <button *ngIf="auth.canUpload() || msg.uid === user.uid" class="delete-button"
+                  (click)="cs.deleteMessage({id: chatId, uid: chat.uid}, msg)"></button>
+        </div>
+      </div>
+    </div>
+    <div class="bottom">
+      <button (click)="fileInput.click()" class="img-btn">
+        <span class="image"></span>
+      </button>
+      <input #fileInput class="hidden-input" type="file" (change)="selectImage($event)" accept="image/*, video/*"/>
+      <button (click)="captureInput.click()" class="img-btn">
+        <span class="capture"></span>
+      </button>
+      <input #captureInput class="hidden-input" type="file" (change)="selectImage($event)" capture accept="image/*, video/*" />
+      <div (click)="removeImage()" class="img-preview" *ngIf="imagePreviewSrc" [ngClass]="{'loading': imageUrl === ''}">
+        <img [src]="imagePreviewSrc" />
+      </div>
+      <input class="input" [(ngModel)]="newMsg" maxlength="255" (keydown.enter)="submit(chatId)">
+      <button (click)="submit(chatId)" class="send-btn" [disabled]="!newMsg && imageUrl === ''"><span></span></button>
+    </div>
+  </div>
+</ng-container>

@@ -1,0 +1,23 @@
+<div class="content">
+  <div class="header">
+    <div>
+      <button class="back-btn" (click)="onBack()">
+        ❮ Back
+      </button>
+    </div>
+  </div>
+  <div class="body">
+    <div class="img-bg">
+      <img src="{{imageUrl || 'assets/icons/pets-24px.svg'}}" class="img-container" [ngClass]="{'img-missing': !imageUrl }"
+           appOnlyImgClick [name]="imageObject.collection" [id]="imageObject.$key" oncontextmenu="return false" />
+    </div>
+  </div>
+  <div class="footer">
+    <div class="caption-row">
+      <span class="caption" *ngIf="imageData">
+        Views: {{imageData.totalViews}}
+      </span>
+    </div>
+  </div>
+  <app-image-data *ngIf="canViewData()" [imageData]="imageData"></app-image-data>
+</div>

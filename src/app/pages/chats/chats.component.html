@@ -1,0 +1,23 @@
+
+<div class="chats">
+  <h1>Messages</h1>
+  <div *ngIf=" auth.authUser() | async as user; else login">
+    <button *ngIf="auth.canUpload()" class="create-btn" (click)="cs.createChat()">NEW CHAT</button>
+    <ul class="chat-list">
+      <li class="chat" *ngFor="let chat of userChats$ | async">
+        <img [src]="user.uid === chat.user.uid ? chat.pUser.photoURL : chat.user.photoURL || 'assets/icons/account_circle-24px.svg'">
+        <a class="link" [routerLink]="['/chat/', chat.id]">
+          {{ user.uid === chat.user.uid ? chat.pUser.displayName : chat.user.displayName }}:
+          {{ chat.chatData.count }} Unread, {{ chat.chatData.unreadMsg }} New Messages
+        </a>
+        <button *ngIf="auth.canUpload()" class="delete-button"
+                (click)="cs.deleteChat(chat.id)"></button>
+      </li>
+    </ul>
+  </div>
+
+  <ng-template #login>
+    <button class="button" (click)="auth.googleLogin()">Login with Google</button>
+  </ng-template>
+
+</div>

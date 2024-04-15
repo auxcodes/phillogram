@@ -3,6 +3,15 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+# Local Files
+.angular
+.netlify
+.env
+netlify_functions/package-lock.json
+netlify_functions/node_modules
+node_modules
+package-lock.json
+
 # User-specific files
 *.rsuser
 *.suo

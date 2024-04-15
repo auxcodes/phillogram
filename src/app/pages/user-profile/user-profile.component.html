@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="profile-form form-content">
+    <button (click)="fileInput.click()" class="img-btn" [ngClass]="{'loading': photoURL === ''}" >
+      <img src="{{photoURL || 'assets/icons/account_circle-24px.svg'}}" />
+    </button>
+    <input #fileInput class="hidden-input" type="file" (change)="selectImage($event)" />
+    <div class="form-group">
+      <input id="photoUrl" class="photo-url" [(ngModel)]="photoURL" type="text" value="{{photoURL || 'assets/icons/account_circle-24px.svg'}}" hidden />
+      <label for="displayName"> Display Name: </label>
+      <input id="displayName" class="display-name" [(ngModel)]="displayName" type="text" value="{{displayName}}" />
+      <label for="email"> Email: </label>
+      <input class="email" type="email" value="{{email}}" disabled />
+      <button (click)=onUpdateProfile() class="update-btn">Update</button>
+    </div>
+    <div class="form-group">
+      <button (click)=onLogout() class="update-btn">Logout</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<section class="container">
+  <section class="content">
+    <div class="albums">
+      <app-album-card class="album" *ngFor="let album of newAlbums" [album]="album"
+                      appOnlyAlbumClick oncontextmenu="return false"></app-album-card>
+    </div>
+  </section>
+</section>
+
+

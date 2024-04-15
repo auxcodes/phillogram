@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="form-content">
+        <h1 class="title">Add Photos</h1>
+        <section class="form-section">
+            <div class="form-group" >
+                <input class="" #albumName id="albumNames" value="" placeholder="Post description" required />
+                <select class="classic" id="privacy" #privacySelect required>
+                    <option *ngFor="let opt of privacyList" [value]="opt.value">{{opt.text}}</option>
+
+                </select>
+            </div>
+        </section>
+        <section class="form-section">
+            <div class="form-content">
+                <div class="form-group">
+                    <label class="" for="browse"> Select Photos: </label>
+                    <div class="file-browse">
+                        <button (click)="fileInput.click()" class="browse-btn">Browse</button>
+                        <input class="files-text" type="text" [value]="fileNames" disabled />
+                        <input #fileInput class="hidden-input" id="browse" type="file" (change)="handleFiles($event.target)"
+                            multiple />
+                    </div>
+                    <div *ngIf="imagePreviewSrc">
+                        <img *ngFor="let image of imagePreviewSrc" class="img-preview" [src]="image" />
+                    </div>
+                </div>
+                <div class="btn-right">
+                    <button class="" (click)="onUpload(albumName.value, privacySelect.value)" [disabled]="upload || !files">Upload <span
+                            *ngIf="upload">{{upload.progress}}</span></button>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

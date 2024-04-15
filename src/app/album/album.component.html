@@ -1,0 +1,7 @@
+<section class="container">
+  <section class="content">
+    <div class="images">
+      <app-image-card class="image" *ngFor="let image of images | async" [image]="image"></app-image-card>
+    </div>
+  </section>
+</section>

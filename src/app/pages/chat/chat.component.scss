@@ -1,0 +1,324 @@
+@import '../../../sass/__variables';
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.chat-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 95%;
+  margin: auto;
+  min-height: 30vh;
+  max-height: 85vh;
+
+  .top {
+    align-self: flex-start;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.8);
+
+    .back-btn {
+      display: inline-flex;
+      padding: 0 16px 0 10px;
+      margin: 10px 0;
+      min-height: 36px;
+      text-decoration: none;
+      align-items: center;
+      color: #fff;
+      background-color: #6b6cf6;
+      border-radius: 36px;
+      border: none;
+      transition: box-shadow .15s;
+
+      &:hover {
+        box-shadow: 0 7px 15px $btn-box-shadow-high;
+      }
+
+      &:active {
+        box-shadow: 0 1px 3px $btn-box-shadow-low;
+      }
+    }
+  }
+
+  .chat {
+    padding: 0;
+    margin: auto;
+    width: 100%;
+    overflow: auto;
+    border-radius: 35px 0 0 35px;
+    scrollbar-width: thin;
+    scrollbar-color: #6b6cf6;
+
+    &::-webkit-scrollbar-track {
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 20px 20px;
+      border: 1px solid $border-color;
+    }
+
+    &::-webkit-scrollbar {
+      background-color: #fff;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #e1e1e1;
+      border-radius: 20px 20px;
+    }
+  }
+
+  .msg {
+    display: flex;
+    position: relative;
+    margin-left: auto;
+    order: 2;
+    text-align: left;
+    padding: 0 0 5px 0;
+    width: 100%;
+    font-size: 1em;
+
+    .msg-content {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      width: auto;
+      border-radius: 20px 20px;
+      border: 1px solid $border-color;
+      margin: 18px 15px 5px 40px;
+      padding: 5px 48px 5px 15px;
+      color: #000;
+      background-color: #f1f1f1;
+
+      .delete-button {
+        position: absolute;
+        cursor: pointer;
+        top: 0%;
+        right: 0%;
+        width: 32px;
+        height: 32px;
+        border: none;
+        background-color: #000;
+        mask-image: url('/assets/icons/delete_forever-24px.svg');
+        mask-repeat: no-repeat;
+        mask-position: 50%;
+        mask-size: 24px;
+        border-radius: 38px;
+      }
+
+      .msg-img {
+        display: flex;
+        flex-direction: row;
+        cursor: pointer;
+        padding: 0 10px 0 0;
+        margin: 5px 5px 5px 0;
+        border: 1px solid #000;
+        background-color: #f1f1f1;
+        border-radius: 40px;
+        width: auto;
+        min-height: 40px;
+        text-decoration: none;
+
+        .view-icon {
+          display: block;
+          min-height: 42px;
+          min-width: 42px;
+          background-color: #000;
+          mask-image: url('/assets/icons/play_circle_outline-24px.svg');
+          mask-position: 50%;
+          mask-repeat: no-repeat;
+          mask-size: 36px;
+        }
+
+        .view-text {
+          display: flex;
+          margin: auto;
+          color: #000;
+        }
+      }
+    }
+
+    .their-msg {
+      color: #fff;
+      background-color: #6b6cf6;
+
+      .delete-button {
+        background-color: #fff;
+      }
+
+      .msg-img {
+        background-color: #6b6cf6;
+        border-color: #fff;
+
+        .view-icon {
+          background-color: #fff;
+        }
+
+        .view-text {
+          color: #fff;
+        }
+      }
+    }
+
+    .user {
+      .name {
+        position: absolute;
+        top: 6px;
+        left: 40px;
+        font-size: x-small;
+      }
+
+      img {
+        position: absolute;
+        top: 19px;
+        left: 0%;
+        width: 32px;
+        height: 32px;
+        border-radius: 32px;
+      }
+    }
+  }
+
+  .bottom {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    background: rgba(255, 255, 255, 0.8);
+    margin: 10px 0;
+    padding: 0;
+
+    input {
+      display: inline-block;
+      margin: 0;
+      width: 100%;
+      min-height: 50px;
+      padding: 12px 20px 12px 20px;
+      border: 1px solid $border-color;
+      box-sizing: border-box;
+      font-size: 1.25rem;
+      border-radius: 50px 0 0 50px;
+    }
+
+
+    .img-btn {
+      cursor: pointer;
+      padding: 0;
+      margin: 5px 5px 5px 0;
+      border: none;
+      background-color: #6b6cf6;
+      border-radius: 50%;
+      min-width: 50px;
+      min-height: 50px;
+
+      span {
+        display: block;
+        min-height: 24px;
+        background-color: #fff;
+        mask-position: 50%;
+        mask-repeat: no-repeat;
+        mask-size: 26px;
+      }
+
+      .image {
+        mask-image: url('/assets/icons/add_image.svg');
+      }
+
+      .capture{
+        mask-image: url('/assets/icons/add_a_photo-24px.svg');
+      }
+    }
+
+    .hidden-input {
+      display: none;
+    }
+
+    .img-preview {
+      cursor: pointer;
+      padding: 0;
+      margin: 0;
+      border-radius: 50px;
+      border: 1px solid $border-color;
+      width: 50px;
+      height: 50px;
+
+      img {
+        max-height: 46px;
+        max-width: 46px;
+        border-radius: 46px;
+        min-width: 46px;
+        min-height: 46px;
+        margin: 2px;
+        transition: opacity 0.2s ease-in-out;
+      }
+
+      &:hover {
+        background-image: url('/assets/icons/delete_forever-24px.svg');
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: 75%;
+
+        img {
+          opacity: 0.25;
+          cursor: pointer;
+          border-radius: 46px;
+        }
+      }
+    }
+
+    .loading {
+      background-image: url('/assets/icons/pets-24px.svg');
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      background-size: 75%;
+      transition: opacity 0.2s ease-in-out;
+      -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+      animation: rotation 2.0s infinite ease-in-out;
+
+      img {
+        opacity: 0.25;
+        cursor: pointer;
+        border-radius: 46px;
+      }
+    }
+
+    @keyframes rotation {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(359deg);
+      }
+    }
+
+    @-webkit-keyframes rotation {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(359deg);
+      }
+    }
+
+    .send-btn {
+      cursor: pointer;
+      padding: 0;
+      margin: 0;
+      border: none;
+      background-color: #6b6cf6;
+      border-radius: 0 50px 50px 0;
+      min-width: 50px;
+      min-height: 50px;
+
+      span {
+        display: block;
+        min-height: 24px;
+        background-color: #fff;
+        mask-image: url('/assets/icons/send-24px.svg');
+        mask-position: 55%;
+        mask-repeat: no-repeat;
+        mask-size: 26px;
+      }
+    }
+  }
+}

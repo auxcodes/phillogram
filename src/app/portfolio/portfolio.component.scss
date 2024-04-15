@@ -1,0 +1,30 @@
+@import '../../sass/__variables';
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  width: 100%;
+
+  .albums {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+    width: 100%;
+    margin: 20px auto;
+  }
+
+  .album {
+    margin: 10px;
+    min-width: 100%;
+
+    @media screen and (min-width: $small-screen) {
+      min-width: 350px;
+      max-width: 350px;
+    }
+  }
+}

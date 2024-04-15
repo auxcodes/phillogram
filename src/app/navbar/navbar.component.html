@@ -1,0 +1,51 @@
+<nav class="title-bar">
+  <div class="title">
+    <div class="icon-btn">
+      <img class="logo" src="assets/logo/phillogram_logo-v2.svg" />
+    </div>
+    <h1>Phillogram</h1>
+  </div>
+  <div class="right-menu">
+    <ul>
+      <!--<li class="site-link" *ngIf="!(user|async)?.uid">
+        <button class="text-btn" routerLink="/login">
+          <span class="text">Log In | Sign Up</span>
+        </button>
+      </li>-->
+      <li class="site-link">
+        <button (click)="navService.upload()" *ngIf="isAdmin()" class="icon-btn">
+          <img class="upload" src="assets/icons/add_image.svg" />
+        </button>
+        <button (click)="onClickMessage()" class="icon-btn">
+          <img class="alert" src="assets/icons/mail-24px.svg" />
+          <span *ngIf="unreadMsg" class="unread"></span>
+        </button>
+        <button (click)="onClickProfile()" class="icon-btn">
+          <img class="account" src="assets/icons/account_circle-24px.svg" [ngClass]="{'account-ct': !loggedIn}"/>
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>
+<nav class="nav-bar-content">
+  <div class="site-nav">
+    <ul>
+      <li class="site-link" *ngFor="let navlink of routerlinks" [ngClass]="{'current-selection': activeItem === navlink.name}">
+        <button (click)=onClickLink(navlink.name) routerLink={{navlink.slug}} >
+          <img class="icon" [src]="navlink.icon"/>
+          <span class="text">{{navlink.text}}</span>
+        </button>
+      </li>
+    </ul>
+  </div>
+  <div class="right-menu">
+    <ul>
+      <li class="site-link" *ngFor="let rightlink of rightNavLinks" [ngClass]="{'current-selection': activeItem === rightlink.name}">
+        <button (click)=onClickLink(rightlink.name) routerLink={{rightlink.slug}}>
+          <img class="icon" [src]="rightlink.icon" />
+          <span class="text">{{rightlink.text}}</span>
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>

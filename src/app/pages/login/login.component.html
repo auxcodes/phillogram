@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="form-content">
+    <h1 class="title">Login In | Sign Up</h1>
+    <div class="btn-group-center">
+        <button type="button" class="btn-long" (click)="googleSignIn()">Sign In with Google</button>
+        <button type="button" class="btn-long" (click)="emailSignIn()">Sign In with Email</button>
+    </div>
+
+    <form *ngIf="emailLogin" #loginForm="ngForm">
+      <p *ngIf="errorMsg !== ''" class="text-danger">{{errorMsg}}</p>
+      <div class="form-group">
+        <label>Email</label>
+        <input class=""
+               #emailControl="ngModel"
+               placeholder="Email"
+               [(ngModel)]="email"
+               name="email" maxlength="254" email required />
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input class=""
+               #passwordControl="ngModel"
+               placeholder="Password"
+               [(ngModel)]="password"
+               name="password" maxlength="70" type="password" required />
+      </div>
+      <div class="btn-right">
+        <button class="" [disabled]="!loginForm.form.valid" type="submit"
+                (click)="signIn()">
+          Sign In
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

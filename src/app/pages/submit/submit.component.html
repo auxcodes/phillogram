@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="form-content">
+    <h1 class="title">Say Hi!</h1>
+    <p class="title-intro">Send me something...</p>
+    <div class="form-section">
+      <div class="form-content" [(ngModel)]="selected" ngDefaultControl>
+        <div class="form-group">
+          <label title="Message" class="">Message:</label>
+          <textarea rows="5" cols="20" placeholder="Your awesome..."  [(ngModel)]="message" #ctrl="ngModel"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="" for="browse"> Select Files: </label>
+          <div class="file-browse">
+            <button (click)="fileInput.click()" class="browse-btn">Browse</button>
+            <input class="files-text" type="text" [value]="fileNames" disabled/>
+            <input #fileInput class="hidden-input" id="browse" type="file" (change)="handleFiles($event)" multiple accept="image/*, video/*" />
+          </div>
+          <div *ngIf="imagePreviewSrc" class="files">
+            <div *ngFor="let image of imagePreviewSrc; let i = index" (click)="removeImage(i)">
+              <div *ngIf="image" class="img-preview">
+                <img [src]="image" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="btn-right">
+          <button class="" (click)="sendMessage()" [disabled]="message == '' && files == undefined">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

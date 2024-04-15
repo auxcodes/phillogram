@@ -1,0 +1,256 @@
+@import './__variables';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-shadow: 0 1px 3px #464646;
+  transition: box-shadow .3s;
+
+  &:hover {
+    box-shadow: 0 7px 15px #828282;
+  }
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-arrows {
+
+  .arrow {
+    cursor: pointer;
+    padding: 0;
+    border: none;
+
+    &:before, &:after {
+      position: absolute;
+      z-index: 2;
+      content: "";
+      opacity: 0.25;
+      transition: opacity 0.2s ease-in-out;
+    }
+
+    &:before {
+      width: 50px;
+      height: 80px;
+      background-color: #6b6cf6;
+    }
+
+    &:after {
+      width: 50px;
+      height: 80px;
+    }
+
+    &:hover {
+      &:before {
+        opacity: 1;
+      }
+
+      &:after {
+        opacity: 1;
+      }
+    }
+  }
+
+  .prev {
+    &:before {
+      top: 40%;
+      left: 0%;
+      border-radius: 0 50px 50px 0;
+    }
+
+    &:after {
+      background-color: white;
+      mask-image: url('/assets/icons/navigate_before-24px.svg');
+      mask-position: 55%;
+      mask-repeat: no-repeat;
+      mask-size: 80px;
+      top: 40%;
+      left: 0%;
+    }
+  }
+
+  .next {
+    &:before {
+      top: 40%;
+      right: 0%;
+      border-radius: 50px 0 0 50px;
+    }
+
+    &:after {
+      background-color: white;
+      mask: url('/assets/icons/navigate_next-24px.svg');
+      mask-position: 45%;
+      mask-repeat: no-repeat;
+      mask-size: 80px;
+      top: 40%;
+      right: 0%;
+    }
+  }
+}
+
+.card-image {
+  display: flex;
+  position: relative;
+  width: auto;
+  height: 30vw;
+  max-height: 348px;
+  cursor: pointer;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    object-fit: cover;
+  }
+
+  @media screen and (max-width: $small-screen) {
+    height: 98vw;
+    max-height: none;
+  }
+
+  .img-link {
+    width: 100%;
+
+    &:before, &:after {
+      position: absolute;
+      z-index: 1;
+      content: "";
+      opacity: 0;
+      transition: opacity 0.2s ease-in-out;
+    }
+
+    &:before {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(white, 0.25);
+    }
+
+    &:after {
+      width: 80px;
+      height: 80px;
+      background: url('https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/svgs/fi-magnifying-glass.svg');
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      background-size: contain;
+      top: 50%;
+      left: 50%;
+      margin-left: -40px;
+      margin-top: -40px;
+    }
+
+    &:hover {
+      &:before {
+        opacity: 1;
+      }
+
+      &:after {
+        opacity: .5;
+      }
+    }
+  }
+}
+
+.card-caption {
+  background-color: white;
+  padding: 0 20px 20px 20px;
+
+  .card-title {
+    margin: 10px 0;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    a, span {
+      text-transform: uppercase;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      color: $dark-body-color;
+
+      &:hover {
+        border-bottom: dotted 1px #9055a2;
+      }
+    }
+  }
+
+  .card-description {
+    color: $light-body-color;
+    bottom: 0;
+    font-size: 14px;
+    line-height: 1.4;
+    margin-top: 10px;
+    max-height: 60px;
+    overflow: hidden;
+  }
+
+  .more {
+    color: $light-body-color;
+    font-size: 14px;
+    text-decoration: none;
+    vertical-align: top;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover {
+      border-bottom: dotted 1px #9055a2;
+    }
+  }
+
+  .artist {
+    color: $light-body-color;
+    font-size: 15px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover {
+      border-bottom: dotted 1px #9055a2;
+    }
+  }
+}
+
+
+.card-footer {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  .card-button {
+    justify-content: flex-end;
+    margin: 0 0 0 auto;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: $highlight-btn-color;
+    padding: 10px 10px;
+    color: $highlight-btn-txt-color;
+    position: relative;
+    font-weight: 700;
+    transition: box-shadow .15s;
+    box-shadow: 0 1px 3px $btn-box-shadow-low;
+    cursor: pointer;
+
+    .link {
+      color: $highlight-btn-txt-color;
+      text-decoration: none;
+    }
+
+    &:hover {
+      text-decoration: underline;
+      box-shadow: 0 7px 15px $btn-box-shadow-high;
+    }
+
+    &:active {
+      box-shadow: 0 1px 3px $btn-box-shadow-low;
+    }
+  }
+}

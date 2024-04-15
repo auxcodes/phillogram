@@ -1,0 +1,36 @@
+@import '../../../sass/cards';
+@import '../../../sass/__variables';
+
+.carousel {
+  display: flex;
+  justify-content: center;
+  margin: 5px 20px;
+  padding: 0;
+  border-bottom: 1px solid $border-color;
+
+  .dot {
+    height: 5px;
+    width: 10px;
+    padding: 3px;
+    margin: auto 2px 0 2px;
+    background-color: #bbb;
+    border-radius: 8px 8px 0 0;
+    display: inline-block;
+    cursor: pointer;
+    transition: height 0.2s ease-in-out;
+    &:hover{
+        height: 10px;
+    }
+  }
+
+  .active-dot {
+    height: 10px;
+    width: 10px;
+    padding: 3px;
+    margin: auto 2px 0 2px;
+    background-color: #6b6cf6;
+    border-radius: 8px 8px 0 0;
+    display: inline-block;
+    cursor: pointer;
+  }
+}

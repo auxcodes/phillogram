@@ -1,0 +1,39 @@
+@import '../../sass/__variables';
+
+.data-container {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 0 0 0;
+  max-width: 100%;
+  height: auto;
+  margin: 16px auto 16px 0;
+  border-top: 1px solid $border-color;
+  border-radius: 5px;
+
+  .user-data {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 16px 16px;
+    padding: 0 0 16px 0;
+    width: 90%;
+    height: auto;
+    text-align: left;
+    border-bottom: 1px solid $border-color;
+    border-radius: 5px;
+
+    .data-row {
+      display: flex;
+      flex-direction: row;
+
+      label {
+        margin: 0px 5px;
+        color: $label-text-color;
+      }
+
+      span {
+        margin: 0px;
+        color: $base-text-color;
+      }
+    }
+  }
+}

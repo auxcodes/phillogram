@@ -1,0 +1,100 @@
+@import '../../sass/__variables';
+
+.content {
+  display: flex;
+  flex-direction: column;
+
+  .header {
+    .back-btn {
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      padding: 0 16px 0 10px;
+      margin: 10px 0;
+      min-height: 36px;
+      align-items: center;
+      color: #fff;
+      background-color: #6b6cf6;
+      border-radius: 36px;
+      transition: box-shadow .15s;
+      font-family: "Lato", Helvetica, Arial, sans-serif;
+      font-size: 1.125rem;
+
+      &:hover {
+        box-shadow: 0 7px 15px $btn-box-shadow-high;
+      }
+
+      &:active {
+        box-shadow: 0 1px 3px $btn-box-shadow-low;
+      }
+    }
+  }
+
+  .body {
+
+    .img-bg {
+      display: block;
+      max-width: 100%;
+      margin: 0 auto;
+
+      .img-container {
+        display: block;
+        margin: 16px auto 0 auto;
+        box-shadow: 0 6px 6px $box-shadow-low;
+        max-width: 100%;
+        min-height: 50vw;
+        width: 100%;
+        height: auto;
+        -webkit-transition: height 1.5s ease-in-out, border-radius 1.5s ease-in-out;
+        transition: height 1.5s ease-in-out, border-radius 1.5s ease-in-out;
+      }
+
+      .img-missing {
+        border-radius: 50%;
+        border: 1px solid $border-color;
+        box-shadow: none;
+        min-height: 33vw;
+        width: 33vw;
+        height: 33vw;
+        transition: border-radius 1s ease-in-out;
+        -webkit-animation: rotation 2.0s infinite ease-in-out;
+        animation: rotation 2.0s infinite ease-in-out;
+      }
+    }
+  }
+
+  @keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(359deg);
+    }
+  }
+
+  @-webkit-keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(359deg);
+    }
+  }
+
+  .footer {
+    .caption-row {
+      padding: 16px 0 10px 0;
+      margin: 0 auto;
+      max-width: 100%;
+
+      .caption {
+        font-size: 1em;
+        font-family: "Montserrat", sans-serif;
+        margin: 18px;
+        color: #222;
+      }
+    }
+  }
+}

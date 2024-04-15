@@ -1,0 +1,31 @@
+
+<div class="data-container">
+  <div class="user-data">
+    <div class="data-row">
+      <label>Image ID: </label><span> {{imageData.$key}}</span>
+    </div>
+    <div class="data-row">
+      <label>Views: </label><span> {{imageData.totalViews}}</span>
+    </div>
+  </div>
+  <div class="user-data" *ngFor="let data of imageData.userViews">
+    <div class="data-row">
+      <label>User: </label><span> {{data.user}}</span>
+    </div>
+    <div class="data-row">
+      <label>Views: </label><span> {{data.viewCount}}</span>
+    </div>
+    <div class="data-row">
+      <label>Longest Time:</label><span>  {{data.longestView}}</span>
+    </div>
+    <div class="data-row">
+      <label>Recent Time:</label><span>  {{data.recentView}}</span>
+    </div>
+    <div class="data-row">
+      <label>Last View:</label><span>  {{data.lastViewDate | date: dateFormat}}</span>
+    </div>
+    <div class="data-row">
+      <label>First View:</label><span>  {{data.firstViewDate | date: dateFormat}}</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<p *ngIf="confirmMessage !== ''">{{confirmMessage}}</p>
+<p *ngIf="errorMessage !== ''">{{errorMessage}}</p>
+<section *ngIf="resetPassword">
+  <p> Reset Password works</p>
+  <form (submit)="onConfirmNewPassword()">
+    <input id="newPassword" type="password" [(ngModel)]="newPassword" name="password" />
+    <input id="confirmPassword" type="password" [(ngModel)]="confirmPassword" name="confirm" />
+    <button type="submit" [disabled]="newPassword === '' || newPassword !== confirmPassword">Submit</button>
+  </form>
+</section>
+<section *ngIf="recoverEmail">
+  <p> Recover Email works</p>
+</section>
+<section *ngIf="verifyEmail">
+  <p> Verify Email works</p>
+</section>

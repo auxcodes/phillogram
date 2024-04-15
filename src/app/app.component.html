@@ -1,0 +1,10 @@
+<section class="container" (click)="onMainWindowClick()">
+  <app-navbar class="nav-header"></app-navbar>
+  <section class="content">
+    <router-outlet></router-outlet>
+    <app-context-menu *ngIf="contextMenuOpen"></app-context-menu>
+  </section>
+  <app-footer class="footer"></app-footer>
+</section>
+
+

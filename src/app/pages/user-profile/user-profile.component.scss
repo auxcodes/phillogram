@@ -1,0 +1,126 @@
+@import '../../../sass/__variables';
+@import '../../../sass/forms';
+
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: 30vh;
+  max-height: 85vh;
+
+  .img-btn {
+    cursor: pointer;
+    padding: 0;
+    margin: 5px auto;
+    border: none;
+    border-radius: 50%;
+    background-color: #f1f1f1;
+    width: auto;
+
+    img {
+      display: flex;
+      width: 80px;
+      height: 80px;
+      margin: 8px;
+      border-radius: 80px;
+      transition: opacity 0.2s ease-in-out;
+    }
+  }
+
+  .hidden-input {
+    display: none;
+  }
+
+  .loading {
+    background-image: url('/assets/icons/pets-24px.svg');
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 80%;
+    transition: opacity 0.2s ease-in-out;
+    -webkit-animation: rotation 2.0s infinite ease-in-out;
+    animation: rotation 2.0s infinite ease-in-out;
+
+    img {
+      opacity: 0.25;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+  }
+
+  @keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(359deg);
+    }
+  }
+
+  @-webkit-keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(359deg);
+    }
+  }
+
+  .photo-url {
+    display: none;
+  }
+
+  .display-name {
+    display: inline-block;
+    margin: 5px;
+    width: 100%;
+    min-height: 50px;
+    padding: 12px 20px 12px 20px;
+    border: 1px solid $border-color;
+    box-sizing: border-box;
+    font-size: 1.25rem;
+    border-radius: 50px;
+  }
+
+  .email {
+    display: inline-block;
+    margin: 5px;
+    width: 100%;
+    min-height: 50px;
+    padding: 12px 20px 12px 20px;
+    border: 1px solid $border-color;
+    box-sizing: border-box;
+    font-size: 1.25rem;
+    border-radius: 50px;
+  }
+
+  .update-btn {
+    background-color: $highlight-btn-color;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px 0 10px auto;
+    border: none;
+    cursor: pointer;
+    font-size: 1.25em;
+    box-shadow: 0 1px 3px $box-shadow-low;
+    transition: box-shadow .15s;
+    max-width: 60%;
+
+    &:hover {
+      text-decoration: underline;
+      box-shadow: 0 7px 15px $btn-box-shadow-high;
+    }
+
+    &:active {
+      box-shadow: 0 1px 3px $btn-box-shadow-low;
+    }
+  }
+}
