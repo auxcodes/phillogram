@@ -6,6 +6,7 @@ import firebase from 'firebase/compat/app';
 import { Observable, BehaviorSubject } from 'rxjs';
 
 import { User } from '../models/user.model';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +37,8 @@ export class AuthenticationService {
   async login(email: string, password: string) {
     return await this.afAuth.signInWithEmailAndPassword(email, password)
       .then(credential => {
-        //console.log('credential user: ', credential.user.uid);
+        const userCred = credential.user ?? { uid: 'null'};
+        console.log('AS - Login Then: ', userCred.uid);
         return this.updateUser(credential.user);
       })
       .catch((error: any) => console.log('Auth Service: Error logging in with email and password:', error));
@@ -52,23 +54,37 @@ export class AuthenticationService {
   }
 
   private customToken(uid: string) {
-    this.http.post<any>('https://phillogram.aux.codes/.netlify/functions/custom_token', { 'auth': { 'uid': uid } })
+    const nfPath = environment.functionsURL;
+    this.http.post<any>( nfPath + '/custom_token', { 'auth': { 'uid': uid } })
       .subscribe(result => {
-        //console.log('af function result: ', result);
-        if (result) {
-          this.afAuth.signInWithCustomToken(result)
-            .then((response: any) => {
-              //console.log('login response: ', response);
-              this.logginIn.next(true);
-            })
-            .catch((error: any) => {
-              //console.log('custom token errors: ', error)
-              this.logginIn.next(true);
-            });
-        }
+        console.log('AS - Auth CT Response: ', result);
+        this.authWithCustomToken(result);
       },
-        error => console.log('af function error: ', error)
+        error => console.log('AS - Auth CT error: ', error)
       );
+  }
+
+  private authWithCustomToken(token: any) {
+    // this.afAuth.signOut()
+    // .then(() => {
+      if (token) {
+        this.afAuth.signInWithCustomToken(token)
+          .then((response: any) => {
+            console.log('AS - Sign In with CT - Response: ', response);
+            this.logginIn.next(true);
+          })
+          .catch((error: any) => {
+            console.log('AS - Sign In with CT - Error: ', error)
+            this.logginIn.next(true);
+          });
+      }
+      else {
+        console.error('AS - Auth with CT - No token detected:', token);
+      }
+    // })
+    // .catch((error: any) => {
+    //   console.log('AS - Auth with CT - Error: ', error)
+    // });
   }
 
   async logout() {
@@ -95,6 +111,10 @@ export class AuthenticationService {
     return this.matchingRole(allowed);
   }
 
+  guestUser() {
+    return 
+  }
+
   canView(): boolean {
     const allowed = ['viewer', 'subscriber', 'admin'];
     return this.matchingRole(allowed);
@@ -119,14 +139,17 @@ export class AuthenticationService {
       this.afs.collection(this.userCollection).doc(user.uid).ref.get()
         .then((doc) => {
           if (doc.exists) {
+            console.log('AS - getUser Then set user: ', doc);
             this.user = new BehaviorSubject<User>(doc.data() as User);
           }
           else {
+            console.log('AS - getUser Then set as guest: ', user);
             this.setUserAsGuest();
           }
         })
         .catch(error => console.log("Error getting user:", error))
         .finally(() => {
+          console.log('AS - getUser Finally: ', user);
           this.userRoles = this.user.value.roles || [];
           this.rolesReady.next(true);
           if (this.currentUser) {
@@ -135,6 +158,8 @@ export class AuthenticationService {
         });
     }
     else {
+      console.log('AS - Set User as Guest');
+      this.currentUser = null;
       this.getUser({ uid: 'p8PPj4flEr4bkVNuTipM' });
     }
   }

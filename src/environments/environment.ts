@@ -11,7 +11,8 @@ export const environment = {
     projectId: 'borgosity-gallery',
     storageBucket: 'borgosity-gallery.appspot.com',
     messagingSenderId: '647598256828'
-  }
+  },
+  functionsURL: "http://localhost:8888/.netlify/functions/"
 };
 
 /*
